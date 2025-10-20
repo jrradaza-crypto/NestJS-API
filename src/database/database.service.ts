@@ -1,3 +1,5 @@
+// I add query function to perform API call in MySQL Database.
+
 import {Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import * as mysql from 'mysql2/promise';
 import * as dotenv from 'dotenv';
@@ -13,7 +15,7 @@ async onModuleInit() {
         host: process.env.DB_HOST || 'mysql-2792c657-gbox-6475.l.aivencloud.com',
         port: +(process.env.DB_PORT || 21430),
         user: process.env.DB_USER || 'avnadmin',
-        password: process.env.DB_PASSWORD || 'AVNS_2637HQ958StxA8Jjisa',
+        password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME || 'defaultdb',
         waitForConnections: true,
         connectionLimit: 10,
