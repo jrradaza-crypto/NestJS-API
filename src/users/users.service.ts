@@ -61,7 +61,7 @@ export class UsersService {
 
   async getAll() {
     const [rows] = await this.pool().execute<RowDataPacket[]>(
-      'SELECT id, username, address, role, created_at FROM users',
+      'SELECT userId, username, address, role, created_at FROM users',
     );
     return rows;
   }

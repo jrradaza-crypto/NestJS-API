@@ -15,7 +15,7 @@ async onModuleInit() {
         host: process.env.DB_HOST || 'mysql-2792c657-gbox-6475.l.aivencloud.com',
         port: +(process.env.DB_PORT || 21430),
         user: process.env.DB_USER || 'avnadmin',
-        password: process.env.DB_PASSWORD,
+        password: process.env.DB_PASSWORD || 'AVNS_2637HQ958StxA8Jjisa',
         database: process.env.DB_NAME || 'defaultdb',
         waitForConnections: true,
         connectionLimit: 10,
