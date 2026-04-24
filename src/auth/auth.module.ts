@@ -1,21 +1,23 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { UsersModule } from '../users/users.module';
-import { PositionsModule } from '../positions/positions.module';
+import { ResidentsModule } from '../residents/residents.module';
+import { ComplaintsModule } from '../complaints/complaints.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
+import { AdminModule } from '../admin/admin.module';
 
 
 @Module({
   imports: [
-    UsersModule,
+    AdminModule,
+    ResidentsModule,
     PassportModule,
-    PositionsModule,
+    ComplaintsModule,
     JwtModule.register({
       secret: process.env.JWT_ACCESS_TOKEN_SECRET || 'access_secret',
-      signOptions: { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN || '900s' },
+      signOptions: { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN || '1800s' },
     }),
   ],
   providers: [AuthService, JwtStrategy],

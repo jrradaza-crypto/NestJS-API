@@ -16,10 +16,10 @@ async onModuleInit() {
         port: +(process.env.DB_PORT || 21430),
         user: process.env.DB_USER || 'avnadmin',
         password: process.env.DB_PASSWORD || 'AVNS_2637HQ958StxA8Jjisa',
-        database: process.env.DB_NAME || 'defaultdb',
+        database: process.env.DB_NAME || 'BarangayComplaints',
         waitForConnections: true,
         connectionLimit: 10,
-        queueLimit: 0,
+        queueLimit:0,
     });
 
     const conn = await this.pool.getConnection();
@@ -31,7 +31,7 @@ async onModuleInit() {
 async query(sql: string, params?: any[]){
     const [rows] = await this.pool.query(sql, params);
     return [rows];
-}
+}   
 
     async onModuleDestroy() {
     await this.pool.end();
