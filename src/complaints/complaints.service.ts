@@ -90,7 +90,7 @@ export class ComplaintsService {
 
    async removeComplaintByAdmin(complaintId: number, adminId: number) {
     const [rows]: any = await this.db.query(
-      'SELECT * FROM residents_complaints WHERE complaintId = ? AND residentId = ?', [complaintId, adminId]
+      'SELECT * FROM residents_complaints WHERE complaintId = ?', [complaintId]
     );
     
     const complaint = rows[0];
@@ -113,7 +113,7 @@ export class ComplaintsService {
       );
 
       await this.db.query(
-        'DELETE FROM residents_complaints WHERE complaintId = ? AND residentId = ?', [complaintId, adminId]
+        'DELETE FROM residents_complaints WHERE complaintId = ?', [complaintId]
       );
 
       return { message: 'Complaint moved to archive' };
